@@ -9,7 +9,7 @@ const parseServerTiming = (serverTimingHeader: string) => {
 
 const baseQueryWithServerTiming = async (args: any, api: any, extraOptions: any) => {
     const baseQuery = fetchBaseQuery({
-        baseUrl: 'https://bazar-api.aralhub.uz/',
+        baseUrl: 'https://api.bazar.aralhub.uz/api/v1/',
         prepareHeaders: (headers) => {
             const token = localStorage.getItem(TOKEN) || '';
             if (token) {

@@ -1,15 +1,15 @@
-import { useGetFilter } from '@/entities/main/model/selectors/mainSelectors';
-import { useMainActions } from '@/entities/main/model/slice/mainSlice';
+// import { useGetFilter } from '@/entities/main/model/selectors/mainSelectors';
+// import { useMainActions } from '@/entities/main/model/slice/mainSlice';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
-import { RadioChangeEvent, Radio } from 'antd';
+// import { RadioChangeEvent, Radio } from 'antd';
 
 const MainHead = () => {
-    const filter = useGetFilter();
-    const { setFilter } = useMainActions();
+    // const filter = useGetFilter();
+    // const { setFilter } = useMainActions();
 
-    const handleSizeChange = (e: RadioChangeEvent) => {
-        setFilter(e.target.value);
-    };
+    // const handleSizeChange = (e: RadioChangeEvent) => {
+    //     setFilter(e.target.value);
+    // };
 
     return (
         <FlexBox cls="flex flex-row justify-between items-center w-full">
@@ -17,15 +17,15 @@ const MainHead = () => {
                 Главная
             </h1>
 
-            <Radio.Group
-                className="flex items-center justify-center"
-                value={filter || 'day'}
-                onChange={handleSizeChange}
-            >
-                <Radio.Button value="day">день</Radio.Button>
-                <Radio.Button value="week">неделя</Radio.Button>
-                <Radio.Button value="month">месяц</Radio.Button>
-            </Radio.Group>
+            {/*<Radio.Group*/}
+            {/*    className="flex items-center justify-center"*/}
+            {/*    value={filter || 'day'}*/}
+            {/*    onChange={handleSizeChange}*/}
+            {/*>*/}
+            {/*    <Radio.Button value="day">день</Radio.Button>*/}
+            {/*    <Radio.Button value="week">неделя</Radio.Button>*/}
+            {/*    <Radio.Button value="month">месяц</Radio.Button>*/}
+            {/*</Radio.Group>*/}
         </FlexBox>
     );
 };

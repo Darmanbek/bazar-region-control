@@ -16,8 +16,10 @@ export interface GeneralData {
     image_url: string;
 }
 
-export interface Top10Data extends GeneralData {
-    attend_count: number;
+export interface  Top10Data{
+    id: number
+    number: string
+    attendances_count: number
 }
 
 export interface GraphicData {
@@ -26,18 +28,20 @@ export interface GraphicData {
     day?: string;
     count: number;
 }
+
 export interface AllCars {
+    id: number;
     number: string;
-    last_attendance: {
-        date: string;
-        time: string;
-        image_url?: string;
-    };
+    date_time: string;
+    date: string;
+    time: string;
+    filename: string;
+    url_path: string;
 }
+
 export interface AttendanceResponse {
-    general: GeneralData[];
-    top10: Top10Data[];
-    total_cars: number;
-    general_count: number;
-    graphic: GraphicData[];
+    attendances_count: number
+    vehicle_count: number
+    total_amount: number
+    attendances_count_by_time: AllCars[]
 }
