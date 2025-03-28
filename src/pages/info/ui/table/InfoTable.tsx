@@ -27,6 +27,7 @@ const InfoTable = () => {
     const { data } = useGetCarInfo({
         month: selectedDate,
         limit,
+        per_page: limit,
         page,
         car_number: id,
     });

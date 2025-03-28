@@ -60,7 +60,7 @@ const Unknown: FC = () => {
     const selectedDate = date || getDefaultDateDay();
 
     const { data } = useGetUnknownCars(
-        { limit, page, date: selectedDate },
+        { limit, per_page: limit, page, date: selectedDate },
         { pollingInterval: 25000, refetchOnFocus: false },
     );
 
