@@ -4,6 +4,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: UnknownSchema = {
     limit: 10,
+    per_page: 10,
     page: 1,
     date: null,
 };

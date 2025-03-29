@@ -5,6 +5,7 @@ import { IFilter, MainShema } from '../types/mainType';
 const initialState: MainShema = {
     filter: 'day',
     limit: 10,
+    per_page: 10,
     page: 1,
     isModalVisible: false,
     isUpdateModal: false,

@@ -5,6 +5,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 const initialState: InfoSchema = {
     month: null,
     limit: 10,
+    per_page: 10,
     page: 1,
 };
 

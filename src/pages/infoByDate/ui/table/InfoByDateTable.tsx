@@ -13,6 +13,7 @@ const InfoByDateTable = () => {
     const [page, setPage] = useState(1);
     const { data } = useGetInfoByDate({
         limit,
+        per_page: limit,
         page,
         date,
         car_number: id,

@@ -4,35 +4,31 @@ import { Form, FormProps, message } from 'antd';
 import { TOKEN } from '@/shared/const/localstorage';
 import { useGetMeLazy, useLogin } from '@/entities/auth/api/authApi';
 import { ILoginForm } from '@/entities/auth';
-import { Button, Input } from '@/shared/ui';
+import { Button, Input, InputPassword } from '@/shared/ui';
 
 const LoginForm = () => {
-    const [login, { data, isSuccess, isError, isLoading }] = useLogin();
+    const [login, { data: loginData, isSuccess, isError, isLoading }] = useLogin();
     const [triggerGetMe] = useGetMeLazy();
     const navigate = useNavigate();
-    const [form] = Form.useForm();
-
+    const [form] = Form.useForm<ILoginForm>();
+    
     const onFinish: FormProps<ILoginForm>['onFinish'] = (values) => {
-        const formData = new FormData();
-        Object.entries(values).forEach(([key, value]) => {
-            formData.append(key, value);
-        });
-        login(formData);
+        login(values);
     };
-
+    
     useEffect(() => {
         if (isError) {
             message.error('Вы ввели неправильную почту или пароль');
-            form.resetFields(['username', 'password']);
+            form.resetFields();
         }
         if (isSuccess) {
             message.success('Добро пожаловать!');
-            localStorage.setItem(TOKEN, String(data?.access_token));
+            localStorage.setItem(TOKEN, String(loginData?.data?.access_token));
             triggerGetMe();
             navigate('/');
         }
-    }, [isError, isSuccess, data, triggerGetMe, navigate, form]);
-
+    }, [isError, isSuccess, loginData, triggerGetMe, navigate, form]);
+    
     return (
         <div className="w-full min-h-screen flex items-center justify-center px-4">
             <div className="w-full max-w-md">
@@ -40,10 +36,11 @@ const LoginForm = () => {
                     Авторизация
                 </h1>
                 <Form
-                    name="basic"
+                    name="login-form"
                     onFinish={onFinish}
                     form={form}
                     style={{ width: '100%' }}
+                    requiredMark={false}
                     onFinishFailed={(errorInfo) =>
                         console.log('Failed:', errorInfo)
                     }
@@ -52,17 +49,21 @@ const LoginForm = () => {
                 >
                     <Form.Item<ILoginForm>
                         label="Почта"
-                        name="username"
+                        name="email"
                         rules={[
                             {
                                 required: true,
                                 message: 'Пожалуйста введите вашу почту!',
                             },
+                            {
+                                type: 'email',
+                                message: 'Введен некорректный адрес электронной почты!',
+                            },
                         ]}
                     >
-                        <Input type="email" />
+                        <Input />
                     </Form.Item>
-
+                    
                     <Form.Item<ILoginForm>
                         label="Пароль"
                         name="password"
@@ -73,12 +74,13 @@ const LoginForm = () => {
                             },
                         ]}
                     >
-                        <Input type="password" />
+                        <InputPassword />
                     </Form.Item>
-
+                    
                     <Form.Item>
                         <Button
                             loading={isLoading}
+                            className={"mt-4"}
                             block
                             type="primary"
                             htmlType="submit"

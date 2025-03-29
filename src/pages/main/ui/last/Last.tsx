@@ -1,16 +1,16 @@
 import { TableProps } from 'antd';
-import { GeneralData, IFilter } from '@/entities/main';
+import { AllCars, IFilter } from '@/entities/main';
 import {
     useGetLimit,
     useGetPage,
 } from '@/entities/main/model/selectors/mainSelectors';
 import { useMainActions } from '@/entities/main/model/slice/mainSlice';
-import { memo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { memo } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import { Card, Image, Table } from '@/shared/ui';
 
 export interface LastProps {
-    data: GeneralData[] | undefined;
+    data: AllCars[] | undefined;
     total: number | undefined;
     filter: IFilter;
 }
@@ -19,32 +19,32 @@ const Last = ({ data, filter, total }: LastProps) => {
     const limit = useGetLimit();
     const page = useGetPage();
     const { setLimit, setPage } = useMainActions();
-    const [isPreviewOpened, setIsPreviewOpened] = useState(false);
-    const navigate = useNavigate();
+    // const [isPreviewOpened, setIsPreviewOpened] = useState(false);
+    // const navigate = useNavigate();
 
-    const columns: TableProps<GeneralData>['columns'] = [
+    const columns: TableProps<AllCars>['columns'] = [
         {
             title: 'День',
-            dataIndex: 'attend_date',
-            key: 'attend_date',
+            dataIndex: 'date',
+            key: 'date',
         },
         {
             title: 'Номер машины',
-            dataIndex: 'car_number',
-            key: 'car_number',
+            dataIndex: 'number',
+            key: 'number',
         },
         {
             title: 'Время',
-            dataIndex: 'attend_time',
-            key: 'attend_time',
+            dataIndex: 'time',
+            key: 'time',
         },
         {
             title: <div className="text-center">Фото</div>,
-            dataIndex: 'image_url',
-            key: 'image_url',
+            dataIndex: 'url_path',
+            key: 'url_path',
             render: (photo) => (
                 <Image
-                    preview={{ onVisibleChange: setIsPreviewOpened }}
+                    // preview={{ onVisibleChange: setIsPreviewOpened }}
                     width={90}
                     onClick={(e) => e.stopPropagation()}
                     src={photo}
@@ -54,16 +54,16 @@ const Last = ({ data, filter, total }: LastProps) => {
             className: 'text-center',
         },
     ];
+    
+    const filterTitle = filter === 'day'
+        ? 'день'
+        : filter === 'week'
+            ? 'неделю'
+            : 'месяц'
 
     return (
         <Card
-            title={`Информация за ${
-                filter === 'day'
-                    ? 'день'
-                    : filter === 'week'
-                    ? 'неделю'
-                    : 'месяц'
-            }`}
+            title={`Информация за ${filterTitle}`}
             className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full md:w-2/3 lg:w-2/3"
         >
             <Table
@@ -81,17 +81,17 @@ const Last = ({ data, filter, total }: LastProps) => {
                     showSizeChanger: true,
                     onShowSizeChange: (_, size) => setLimit(size),
                 }}
-                rowKey={(rec) => rec.attend_id}
-                onRow={(rec) => ({
-                    onClick: () => {
-                        if (!isPreviewOpened) {
-                            navigate(`/${rec.car_number}`);
-                        }
-                    },
-                    className: 'hover:cursor-pointer',
-                })}
+                rowKey={"id"}
+                // onRow={(rec) => ({
+                //     onClick: () => {
+                //         if (!isPreviewOpened) {
+                //             navigate(`/${rec.id}`);
+                //         }
+                //     },
+                //     className: 'hover:cursor-pointer',
+                // })}
                 className="w-full"
-                scroll={{ y: 450 }}
+                scroll={{ y: 700 }}
             />
         </Card>
     );

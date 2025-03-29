@@ -1,8 +1,8 @@
 import { IFilter, Top10Data } from '@/entities/main';
 import { Card, Table, Image } from '@/shared/ui';
 import { TableProps } from 'antd';
-import { memo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { memo, } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 export interface TopCarsProps {
     data: Top10Data[] | undefined;
@@ -10,15 +10,15 @@ export interface TopCarsProps {
 }
 
 const TopCars = ({ data, filter }: TopCarsProps) => {
-    const [isPreviewOpened, setIsPreviewOpened] = useState(false);
-    const navigate = useNavigate();
+    // const [isPreviewOpened, setIsPreviewOpened] = useState(false);
+    // const navigate = useNavigate();
 
     const columns: TableProps<Top10Data>['columns'] = [
         {
             title: '№',
             dataIndex: 'top',
             key: 'top',
-            render: (_: any, __: Top10Data, index: number) => <>{index + 1}</>,
+            render: (_v, _r, index: number) => <>{index + 1}</>,
         },
         {
             title: 'Фото',
@@ -26,8 +26,9 @@ const TopCars = ({ data, filter }: TopCarsProps) => {
             key: 'image_url',
             render: (photo) => (
                 <Image
-                    preview={{ onVisibleChange: setIsPreviewOpened }}
+                    // preview={{ onVisibleChange: setIsPreviewOpened }}
                     width={60}
+                    preview={!!photo}
                     onClick={(e) => e.stopPropagation()}
                     src={photo}
                     alt="photo"
@@ -36,8 +37,8 @@ const TopCars = ({ data, filter }: TopCarsProps) => {
         },
         {
             title: 'Номер машины',
-            dataIndex: 'car_number',
-            key: 'car_number',
+            dataIndex: 'number',
+            key: 'number',
             className: 'text-start',
         },
         {
@@ -48,21 +49,21 @@ const TopCars = ({ data, filter }: TopCarsProps) => {
         },
         {
             title: 'Количество',
-            dataIndex: 'attend_count',
-            key: 'attend_count',
+            dataIndex: 'attendances_count',
+            key: 'attendances_count',
             className: 'text-start',
         },
     ];
+    
+    const filterTitle = filter === 'day'
+        ? 'день'
+        : filter === 'week'
+            ? 'неделю'
+            : 'месяц'
 
     return (
         <Card
-            title={`Топ машин за ${
-                filter === 'day'
-                    ? 'день'
-                    : filter === 'week'
-                    ? 'неделю'
-                    : 'месяц'
-            }`}
+            title={`Топ машин за ${filterTitle}`}
             className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full max-w-4xl sm:p-0 !important"
         >
             <Table
@@ -70,16 +71,16 @@ const TopCars = ({ data, filter }: TopCarsProps) => {
                 loading={Boolean(!data)}
                 columns={columns}
                 pagination={false}
-                rowKey={(rec) => rec.attend_id}
+                rowKey={(rec) => rec.id}
                 className="w-full"
-                onRow={(rec) => ({
-                    onClick: () => {
-                        if (!isPreviewOpened) {
-                            navigate(`/${rec.car_number}/${rec.attend_date}`);
-                        }
-                    },
-                    className: 'hover:cursor-pointer',
-                })}
+                // onRow={(rec) => ({
+                //     onClick: () => {
+                //         if (!isPreviewOpened) {
+                //             navigate(`/${rec.number}/${rec.attend_date}`);
+                //         }
+                //     },
+                //     className: 'hover:cursor-pointer',
+                // })}
                 scroll={{ x: true }}
                 size="small"
             />
