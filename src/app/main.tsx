@@ -5,7 +5,7 @@ import { AntdProvider } from "./providers/antd"
 import { ErrorBoundaryProvider } from "./providers/error-boundary"
 import { StoreProvider } from "./providers/StoreProvider"
 
-const container = document.getElementById("bazar")
+const container = document.getElementById("root")
 
 if (!container) {
 	throw new Error(
