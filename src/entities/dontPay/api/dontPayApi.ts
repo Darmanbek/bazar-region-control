@@ -1,6 +1,6 @@
 import { rtkApi } from "@/shared/api/rtkApi"
+import type { IParams, IResponse } from "@/shared/types/types"
 import type { Key } from "react"
-import type { IParams, IResponse } from "src/shared/types/types"
 import type {
 	IDontPayForm,
 	IDontPayResponse

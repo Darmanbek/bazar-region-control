@@ -1,6 +1,6 @@
 import { rtkApi } from "@/shared/api/rtkApi"
+import type { IResponseData } from "@/shared/types/types"
 import type { Key } from "react"
-import type { IResponseData } from "src/shared/types/types"
 import type {
 	WorkGraphicResponse,
 	WorkingGraphicForm
