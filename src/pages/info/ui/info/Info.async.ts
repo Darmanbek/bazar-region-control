@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const InfoAsync = lazy(() => import('./Info'));
+const InfoAsync = lazy(() => import("./Info"))
 
-export { InfoAsync as Info };
+export { InfoAsync as Info }

@@ -1,13 +1,13 @@
-import { rtkApi } from '@/shared/api/rtkApi';
-import { InfoByDateResponse } from '../model/infoByDateType';
-import { IParams } from '@/shared/types/types';
+import { rtkApi } from "@/shared/api/rtkApi"
+import type { InfoByDateResponse } from "../model/infoByDateType"
+import type { IParams } from "@/shared/types/types"
 
 const infoByDateApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getInfoByDate: build.query<InfoByDateResponse, IParams>({
             query: (params) => ({
                 url: `car/${params.car_number}`,
-                method: 'GET',
+                method: "GET",
                 params: {
                     limit: params.limit,
                     page: params.page,
@@ -16,6 +16,6 @@ const infoByDateApi = rtkApi.injectEndpoints({
             }),
         }),
     }),
-});
+})
 
-export const useGetInfoByDate = infoByDateApi.useGetInfoByDateQuery;
+export const useGetInfoByDate = infoByDateApi.useGetInfoByDateQuery

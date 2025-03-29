@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const HistoryTableAsync = lazy(() => import('./HistoryTable'));
+const HistoryTableAsync = lazy(() => import("./HistoryTable"))
 
-export { HistoryTableAsync as HistoryTable };
+export { HistoryTableAsync as HistoryTable }

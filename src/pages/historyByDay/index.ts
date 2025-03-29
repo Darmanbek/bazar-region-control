@@ -1,1 +1,1 @@
-export { HistoryByDay } from './ui/historyByDay/HistoryByDay.async';
+export { HistoryByDay } from "./ui/historyByDay/HistoryByDay.async"

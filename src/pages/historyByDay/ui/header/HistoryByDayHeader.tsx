@@ -1,33 +1,37 @@
-import { Button } from '@/shared/ui';
-import { FlexBox } from '@/shared/ui/box/FlexBox';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { memo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Button } from "@/shared/ui"
+import { FlexBox } from "@/shared/ui/box/FlexBox"
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { memo } from "react"
+import { useNavigate } from "react-router-dom"
 
 const HistoryByDayHeader = ({ date }: { date: string }) => {
-    const navigate = useNavigate();
-    const downloadFile = () => {
-        const url = `https://bazar-api.aralhub.uz/export-data/report/?date=${date}`;
-        window.location.href = url;
-    };
+	const navigate = useNavigate()
+	const downloadFile = () => {
+		const url = `https://bazar-api.aralhub.uz/export-data/report/?date=${date}`
+		window.location.href = url
+	}
 
-    return (
-        <>
-            <FlexBox cls="flex flex md:flex-row justify-between items-center mb-4 gap-4">
-                <h1 className="text-xl sm:text-3xl font-medium text-center md:text-left">
-                    История за {date}
-                </h1>
-                <Button onClick={downloadFile}>
-                    <FontAwesomeIcon icon={faArrowDown} />
-                    скачать
-                </Button>
-            </FlexBox>
-            <Button onClick={() => navigate(-1)} type="primary">
-                Назад
-            </Button>
-        </>
-    );
-};
+	return (
+		<>
+			<FlexBox
+				cls={"flex flex md:flex-row justify-between items-center mb-4 gap-4"}
+			>
+				<h1
+					className={"text-xl sm:text-3xl font-medium text-center md:text-left"}
+				>
+					История за {date}
+				</h1>
+				<Button onClick={downloadFile}>
+					<FontAwesomeIcon icon={faArrowDown} />
+					скачать
+				</Button>
+			</FlexBox>
+			<Button onClick={() => navigate(-1)} type={"primary"}>
+				Назад
+			</Button>
+		</>
+	)
+}
 
-export default memo(HistoryByDayHeader);
+export default memo(HistoryByDayHeader)

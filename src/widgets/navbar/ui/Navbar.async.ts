@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const NavbarAsync = lazy(() => import('./Navbar'));
+const NavbarAsync = lazy(() => import("./Navbar"))
 
-export { NavbarAsync as Navbar };
+export { NavbarAsync as Navbar }

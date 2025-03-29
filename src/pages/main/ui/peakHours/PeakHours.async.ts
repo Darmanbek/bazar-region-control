@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const PeakHoursAsync = lazy(() => import('./PeakHours'));
+const PeakHoursAsync = lazy(() => import("./PeakHours"))
 
-export { PeakHoursAsync as PeakHours };
+export { PeakHoursAsync as PeakHours }

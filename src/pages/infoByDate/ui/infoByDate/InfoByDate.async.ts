@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const InfoByDateAsync = lazy(() => import('./InfoByDate'));
+const InfoByDateAsync = lazy(() => import("./InfoByDate"))
 
-export { InfoByDateAsync as InfoByDate };
+export { InfoByDateAsync as InfoByDate }

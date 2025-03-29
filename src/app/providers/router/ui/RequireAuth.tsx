@@ -1,44 +1,44 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { RoutePath } from '../routeConfig/routeConfig';
-import { TOKEN } from '@/shared/const/localstorage';
-import { useEffect } from 'react';
-import { useGetMeLazy } from '@/entities/auth/api/authApi'
+import { useLocation, useNavigate } from "react-router-dom"
+import { RoutePath } from "../routeConfig/routeConfig"
+import { TOKEN } from "@/shared/const/localstorage"
+import { useEffect } from "react"
+import { useGetMeLazy } from "@/entities/auth/api/authApi"
 
 export function RequireAuth({ children }: { children: JSX.Element }) {
-    const [triggerGetMe, { isError, isSuccess, isLoading }] = useGetMeLazy();
-    const token = localStorage.getItem(TOKEN);
-    const location = useLocation();
-    const navigate = useNavigate();
+    const [triggerGetMe, { isError, isSuccess, isLoading }] = useGetMeLazy()
+    const token = localStorage.getItem(TOKEN)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (token) {
-            triggerGetMe();
+            triggerGetMe()
         } else {
             navigate(RoutePath.login, {
                 state: { from: location },
                 replace: true,
-            });
+            })
         }
-    }, [token]);
+    }, [token])
 
     useEffect(() => {
         if (isLoading) {
-            return;
+            return
         }
         if (isSuccess) {
-            return;
+            return
         }
         if (isError) {
             navigate(RoutePath.login, {
                 state: { from: location },
                 replace: true,
-            });
+            })
         }
-    }, [isError, isSuccess, isLoading, navigate, location]);
+    }, [isError, isSuccess, isLoading, navigate, location])
 
     if (isLoading || !token) {
-        return null;
+        return null
     }
 
-    return children;
+    return children
 }

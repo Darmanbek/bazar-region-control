@@ -1,22 +1,22 @@
-import { rtkApi } from '@/shared/api/rtkApi';
-import { HistoryDataResponse } from '../model/types/historyType';
+import { rtkApi } from "@/shared/api/rtkApi"
+import type { HistoryDataResponse } from "../model/types/historyType"
 
 const historyApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getHistoryData: build.query<HistoryDataResponse[], { date: string }>({
             query: ({ date }) => ({
                 url: `daily-report/?date=${date}`,
-                method: 'GET',
+                method: "GET",
             }),
         }),
         getHistoryDay: build.query<HistoryDataResponse, { date: string }>({
             query: ({ date }) => ({
                 url: `daily-report/?date=${date}`,
-                method: 'GET',
+                method: "GET",
             }),
         }),
     }),
-});
+})
 
-export const useGetHistoryData = historyApi.useGetHistoryDataQuery;
-export const useGetHistoryDay = historyApi.useGetHistoryDayQuery;
+export const useGetHistoryData = historyApi.useGetHistoryDataQuery
+export const useGetHistoryDay = historyApi.useGetHistoryDayQuery

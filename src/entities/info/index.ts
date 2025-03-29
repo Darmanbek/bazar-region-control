@@ -1,1 +1,1 @@
-export type { CarEntry, InfoSchema } from './model/types/infoTypes';
+export type { CarEntry, InfoSchema } from "./model/types/infoTypes"

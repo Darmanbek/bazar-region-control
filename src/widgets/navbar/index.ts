@@ -1,1 +1,1 @@
-export { Navbar } from './ui/Navbar.async';
+export { Navbar } from "./ui/Navbar.async"

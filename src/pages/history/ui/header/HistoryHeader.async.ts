@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const HistoryHeaderAsync = lazy(() => import('./HistoryHeader'));
+const HistoryHeaderAsync = lazy(() => import("./HistoryHeader"))
 
-export { HistoryHeaderAsync as HistoryHeader };
+export { HistoryHeaderAsync as HistoryHeader }

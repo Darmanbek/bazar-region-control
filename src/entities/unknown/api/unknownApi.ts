@@ -1,6 +1,6 @@
-import { rtkApi } from '@/shared/api/rtkApi';
-import { UnknownResponse } from '../model/types/unknownTypes';
-import { IParams } from '@/shared/types/types';
+import { rtkApi } from "@/shared/api/rtkApi"
+import type { UnknownResponse } from "../model/types/unknownTypes"
+import type { IParams } from "@/shared/types/types"
 
 const unknownApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
@@ -10,7 +10,7 @@ const unknownApi = rtkApi.injectEndpoints({
                 refetchOnMountOrArgChange: true,
                 refetchOnFocus: true,
                 refetchOnReconnect: true,
-                url: 'unknown-car/',
+                url: "unknown-car/",
                 params: {
                     car_date: params.date,
                     limit: params.limit,
@@ -19,6 +19,6 @@ const unknownApi = rtkApi.injectEndpoints({
             }),
         }),
     }),
-});
+})
 
-export const useGetUnknownCars = unknownApi.useGetUnknownCarsQuery;
+export const useGetUnknownCars = unknownApi.useGetUnknownCarsQuery

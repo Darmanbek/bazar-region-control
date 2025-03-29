@@ -1,1 +1,1 @@
-export type * from './model/types/authTypes';
+export type * from "./model/types/authTypes"

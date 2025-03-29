@@ -1,1 +1,1 @@
-export { InfoByDate } from './ui/infoByDate/InfoByDate.async';
+export { InfoByDate } from "./ui/infoByDate/InfoByDate.async"

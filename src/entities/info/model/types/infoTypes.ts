@@ -1,4 +1,4 @@
-import { IParams } from '@/shared/types/types'
+import type { IParams } from "@/shared/types/types"
 
 export interface CarEntry {
     date: string;       

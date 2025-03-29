@@ -1,1 +1,1 @@
-export { Info } from './ui/info/Info.async';
+export { Info } from "./ui/info/Info.async"

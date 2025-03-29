@@ -1,1 +1,1 @@
-export type {HistorySchema} from './model/types/historyType'
+export type {HistorySchema} from "./model/types/historyType"

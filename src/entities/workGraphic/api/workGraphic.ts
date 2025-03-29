@@ -1,34 +1,45 @@
-import { rtkApi } from '@/shared/api/rtkApi';
-import {
-    WorkGraphicResponse,
-    WorkingGraphicForm,
-} from '../model/types/workGraphicTypes';
+import { rtkApi } from "@/shared/api/rtkApi"
+import type { Key } from "react"
+import type { IResponseData } from "src/shared/types/types"
+import type {
+	WorkGraphicResponse,
+	WorkingGraphicForm
+} from "../model/types/workGraphicTypes"
 
 const workGraphicApi = rtkApi.injectEndpoints({
-    endpoints: (build) => ({
-        getWorkingGraphic: build.query<WorkGraphicResponse, void>({
-            query: () => ({
-                url: 'start_end_time/',
-                method: 'GET',
-            }),
-        }),
-        createWorkingGraphic: build.mutation<unknown, WorkingGraphicForm>({
-            query: (body) => ({
-                url: `start_end_time/?start_time=${body.start_time}&end_time=${body.end_time}`,
-                method: 'POST',
-            }),
-        }),
-        updateWorkingGraphic: build.mutation<unknown, WorkingGraphicForm>({
-            query: (body) => ({
-                url: `start_end_time/?start_time=${body.start_time}&end_time=${body.end_time}`,
-                method: 'PUT',
-            }),
-        }),
-    }),
-});
+	endpoints: (build) => ({
+		getWorkingGraphic: build.query<IResponseData<WorkGraphicResponse>, void>({
+			query: () => ({
+				url: "admin/work-schedules",
+				method: "GET"
+			}),
+			providesTags: ["graphic"]
+		}),
+		getWorkingGraphicById: build.query<unknown, Key>({
+			query: (id) => ({
+				url: `admin/work-schedules/${id}`,
+				method: "GET"
+			}),
+			providesTags: [
+				{
+					type: "graphic",
+					id: "one"
+				}
+			]
+		}),
+		updateWorkingGraphic: build.mutation<Key, WorkingGraphicForm>({
+			query: (formData) => ({
+				url: `admin/work-schedules/${formData.id}`,
+				method: "PUT",
+				body: formData
+			}),
+			invalidatesTags: ["graphic"]
+		})
+	})
+})
 
-export const useGetWorkingGraphic = workGraphicApi.useGetWorkingGraphicQuery;
-export const createWorkingGraphic =
-    workGraphicApi.useCreateWorkingGraphicMutation;
+export const useGetWorkingGraphic = workGraphicApi.useGetWorkingGraphicQuery
+export const useGetWorkingGraphicById =
+	workGraphicApi.useGetWorkingGraphicByIdQuery
 export const updateWorkingGraphic =
-    workGraphicApi.useUpdateWorkingGraphicMutation;
+	workGraphicApi.useUpdateWorkingGraphicMutation

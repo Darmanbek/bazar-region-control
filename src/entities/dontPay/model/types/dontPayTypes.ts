@@ -1,4 +1,9 @@
-export interface DontPayResponse {
-    number: string;
-    id: number;
+export interface IDontPayResponse {
+	id: number
+	number: string
+	is_exception: boolean
+}
+
+export interface IDontPayForm {
+	number: string
 }

@@ -1,13 +1,13 @@
-import { rtkApi } from '@/shared/api/rtkApi';
-import { IParams } from '@/shared/types/types'
-import { CarEntry } from '..'
+import { rtkApi } from "@/shared/api/rtkApi"
+import type { IParams } from "@/shared/types/types"
+import type { CarEntry } from ".."
 
 const infoApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getCarInfo: build.query<CarEntry[], IParams>({
             query: (params) => ({
                 url: `car/${params.car_number}`,
-                method: 'GET',
+                method: "GET",
                 params: {
                     page: params.page,
                     limit: params.limit,
@@ -16,6 +16,6 @@ const infoApi = rtkApi.injectEndpoints({
             }),
         }),
     }),
-});
+})
 
-export const useGetCarInfo = infoApi.useGetCarInfoQuery;
+export const useGetCarInfo = infoApi.useGetCarInfoQuery

@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const InfoTableAsync = lazy(() => import('./InfoTable'));
+const InfoTableAsync = lazy(() => import("./InfoTable"))
 
-export { InfoTableAsync as InfoTable };
+export { InfoTableAsync as InfoTable }

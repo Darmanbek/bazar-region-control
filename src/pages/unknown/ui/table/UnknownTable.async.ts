@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const UnknownTableAsync = lazy(() => import('./UnknownTable'));
+const UnknownTableAsync = lazy(() => import("./UnknownTable"))
 
-export { UnknownTableAsync as UnknownTable };
+export { UnknownTableAsync as UnknownTable }

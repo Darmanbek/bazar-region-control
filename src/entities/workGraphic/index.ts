@@ -1,1 +1,1 @@
-export type { WorkGraphicResponse, WorkingGraphicForm } from './model/types/workGraphicTypes';
+export type { WorkGraphicResponse, WorkingGraphicForm } from "./model/types/workGraphicTypes"

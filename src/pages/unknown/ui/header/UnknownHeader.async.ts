@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const UnknownHeaderAsync = lazy(() => import('./UnknownHeader'));
+const UnknownHeaderAsync = lazy(() => import("./UnknownHeader"))
 
-export { UnknownHeaderAsync as UnknownHeader };
+export { UnknownHeaderAsync as UnknownHeader }

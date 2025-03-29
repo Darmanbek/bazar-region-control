@@ -1,5 +1,5 @@
-import { lazy } from 'react';
+import { lazy } from "react"
 
-const HistoryAsync = lazy(() => import('./History'));
+const HistoryAsync = lazy(() => import("./History"))
 
-export { HistoryAsync as History };
+export { HistoryAsync as History }

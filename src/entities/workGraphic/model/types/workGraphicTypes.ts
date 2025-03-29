@@ -1,10 +1,13 @@
 export interface WorkGraphicResponse {
-    start_time: string;
-    end_time: string;
-    id: number;
+	id: number
+	start_time: string
+	end_time: string
+	day_of_the_week: number
 }
 
 export interface WorkingGraphicForm {
-    start_time: string;
-    end_time: string;
+	id?: number
+	start_time: string
+	end_time: string
+	day_of_the_week: number
 }
