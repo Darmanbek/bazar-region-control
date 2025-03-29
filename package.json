@@ -1,6 +1,6 @@
 {
-	"name": "project-vite",
-	"version": "1.0.0",
+	"name": "bazar-region-control",
+	"version": "1.0.1",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
