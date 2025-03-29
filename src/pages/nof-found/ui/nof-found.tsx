@@ -1,7 +1,7 @@
 import { Button, Flex, Result } from "@/shared/ui"
 import { faArrowLeft, faHome } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Space } from "antd"
+import { Space } from "@/shared/ui"
 import { useNavigate } from "react-router-dom"
 
 export const NotFound = () => {

@@ -1,18 +1,28 @@
-import { lazy } from "react"
-
+export { Button } from "./button/button/button.async"
 export { DeleteButton } from "./button/delete-button/delete-button.async"
 export { EditButton } from "./button/edit-button/edit-button.async"
 export { Count } from "./count/count.async"
 export { Card } from "./card/card.async"
+export { Result } from "./result/result.async"
 
-export const Button = lazy(() => import("antd/es/button/button"))
-export const Input = (await import("antd/es/input/Input")).default
-export const InputNumber = (await import("antd/es/input-number/index")).default
-export const InputPassword = (await import("antd/es/input/Password")).default
-export const Modal = (await import("antd/es/modal/Modal")).default
-export const DatePicker = (await import("antd/es/date-picker")).default
-export const Table = (await import("antd/es/table/Table")).default
-export const Image = (await import("antd/es/image")).default
-export const Flex = (await import("antd/es/flex")).default
-export const Result = (await import("antd/es/result")).default
-export const Space = (await import("antd/es/space")).default
+import DatePicker from "antd/es/date-picker"
+import Flex from "antd/es/flex"
+import Image from "antd/es/image"
+import InputNumber from "antd/es/input-number"
+import Input from "antd/es/input/Input"
+import InputPassword from "antd/es/input/Password"
+import Modal from "antd/es/modal/Modal"
+import Space from "antd/es/space"
+import Table from "antd/es/table/Table"
+
+export {
+	Input,
+	InputNumber,
+	InputPassword,
+	Modal,
+	DatePicker,
+	Table,
+	Image,
+	Flex,
+	Space
+}

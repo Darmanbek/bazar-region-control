@@ -1,17 +1,20 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Button, Popconfirm } from "antd"
-import { memo } from "react"
+import { type FC, lazy, memo } from "react"
+import { Button } from "@/shared/ui"
 
-type Props = {
+const Popconfirm = lazy(() => import("antd/es/popconfirm"))
+
+type DeleteButtonProps = {
+	title?: string
 	onConfirm: () => void
 }
 
-const DeleteButton = ({ onConfirm }: Props) => {
+const DeleteButton: FC<DeleteButtonProps> = ({ onConfirm, title }) => {
 	return (
 		<Popconfirm
 			onConfirm={() => onConfirm()}
-			title={"Вы действительно хотите удалить?"}
+			title={title || "Вы действительно хотите удалить?"}
 		>
 			<Button
 				type={"primary"}

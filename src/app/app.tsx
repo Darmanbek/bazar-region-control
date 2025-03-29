@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 import { AppRouter } from "./providers/router"
-import "./styles/index.scss"
+import "./styles/index.css"
 
 const App = () => {
 	return (

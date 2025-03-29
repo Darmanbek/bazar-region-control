@@ -1,5 +1,6 @@
-import { App, ConfigProvider, theme } from "antd"
+import { theme } from "antd"
 import localeRU from "antd/locale/ru_RU"
+import { ConfigProvider, App } from "antd"
 import { type FC, type PropsWithChildren } from "react"
 
 const Antd: FC<PropsWithChildren> = ({ children }) => {
